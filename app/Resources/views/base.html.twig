@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+ 		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+
+		<!-- Basic SEO -->
+		<title>{% block meta_title %}{% endblock %}{% block meta_title_base %}Kakeïbo{% endblock %}</title>
+		<meta name="description" content="{% block meta_desc %}{% endblock %}" />
+		<!-- Stylesheets -->
+		<link href="{{ asset('css/pkmn-kit.css') }}" rel="stylesheet" />
+		{% block stylesheets %}{% endblock %}
+		<!-- Javascripts -->
+		<script type="text/javascript" src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+
+		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+	<body>
+		<div class="pkmn-core">
+			<header class="pkmn-header">
+				I'm the header
+			</header>
+
+			<div class="pkmn-body">
+				{% block body %}{% endblock %}
+			</div>
+
+			<footer class="pkmn-footer text-center">
+				<span class="pkmn-brand">Pkmn <span>Kit</span></span> × <a href="http://litti-aurelien.fr/" target="_blank">Aisekhiel</a> × 2017
+			</footer>
+		</div>
+		{% block javascripts %}{% endblock %}
+	</body>
+</html>

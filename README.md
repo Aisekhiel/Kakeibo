@@ -1,1 +1,4 @@
-kakeibo
+Kakeibo
+========================
+
+Bank account manager
