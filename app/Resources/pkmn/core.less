@@ -42,8 +42,24 @@ a, .link {
 	}
 }
 
+
+// Paragraphs ---------------------------
+p {
+	margin: 0;
+	+ p {
+		margin-top: 1.2em;
+	}
+}
+
+
+// .pkmn-kit = <body> -------------------
+.pk-body {
+	overflow: hidden; // Prevents margin collapse
+}
+
+
 // Brand --------------------------------
-.pk-brand {
+.pkmn-kit-brand {
 	color: #444;
     font-variant: small-caps;
 	font-weight: bold;
@@ -61,6 +77,11 @@ a, .link {
 	    width: 2em;
 	    margin-left: -1em;
 	    opacity: .2;
+	}
+
+	span {
+		color: #888;
+		transition: color 444ms ease;
 	}
 
 	&:hover {

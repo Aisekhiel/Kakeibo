@@ -16,18 +16,24 @@
 
 		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-	<body>
+	<body class="pkmn-kit">
 		<div class="pk-core">
-			<header class="pk-header">
-				I'm the header
+			<header class="pk-header pk-header--fixed">
+				<div class="pk-maximizr">
+					<div class="header-logo header-logo--text">
+						<a href="{{ path('homepage') }}">Pkmn Kit</a>
+					</div>
+				</div>
 			</header>
 
 			<div class="pk-body">
-				{% block body %}{% endblock %}
+				<div class="pk-maximizr">
+					{% block body %}{% endblock %}
+				</div>
 			</div>
 
 			<footer class="pk-footer text-center">
-				<span class="pk-brand">Pkmn <span>Kit</span></span> by <a href="http://litti-aurelien.fr/" target="_blank">Aisekhiel</a>
+				<span class="pkmn-kit-brand">Pkmn <span>Kit</span></span> by <a href="http://litti-aurelien.fr/" target="_blank">Aisekhiel</a>
 			</footer>
 		</div>
 		{% block javascripts %}{% endblock %}
