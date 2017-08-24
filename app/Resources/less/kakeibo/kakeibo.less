@@ -1,0 +1,40 @@
+// Include custom bootstrap
+@import "bootstrap.less";
+
+// Variables
+@import "mixins.less";
+@import "variables.less";
+@import "fonts.less";
+
+// Basics
+@import "buttons.less";
+@import "footer.less";
+
+
+
+// .pkmn-kit = <body> -------------------
+.kkb-core {
+	overflow: hidden; // Prevents margin collapse
+}
+
+
+.kkb-logo {
+	font-family: @font-family-logo;
+	font-size: 1em;
+	font-weight: bold;
+	letter-spacing: .04em;
+	margin: 0;
+	user-select: none;
+
+	&--link {
+		color: @header-logo-color;
+		&:hover, &:focus {
+			color: @header-logo-color-hover;
+			text-decoration: none;
+		}
+
+		&:active {
+			color: @header-logo-color-active;
+		}
+	}
+}
