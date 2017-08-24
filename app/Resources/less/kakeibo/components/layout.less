@@ -1,0 +1,268 @@
+.khl-body {
+	overflow: hidden; // Prevents margin collapse
+}
+
+// Navigation
+.khl-navigation {
+	background-color: @navigation-bg;
+    min-height: @navigation-min-height;
+	// position: fixed;
+	// top: 0;
+	// left: 0;
+	// right: 0;
+
+	> ._inner {
+		display: table;
+		table-layout: fixed;
+		width: 100%;
+	}
+
+	.navigation-content {
+		display: table-cell;
+		vertical-align: middle;
+		width: 100%;
+
+		&--right {
+			width: 3.6em;
+		}
+	}
+
+	.khl-sidebar-btn-togglr {
+		font-size: 1.4em;
+		display: inline-block;
+		padding: @navitation-item-padding-vertical .8em;
+	}
+}
+
+// Navigation > User shortcuts
+.nav-user-shortcuts {
+	background-color: darken(@navigation-bg, 2%);
+	padding: @navitation-item-padding-vertical;
+	position: relative;
+
+	.shortcuts-btn-togglr {
+		display: table;
+		table-layout: fixed;
+		width: 100%;
+
+		> ._avatar, > ._text {
+			display: table-cell;
+			width: 100%;
+			vertical-align: middle;
+		}
+
+		> ._avatar {
+			background-color: darken(@navigation-bg, 10%);
+			width: 2.4em;
+			border-radius: 50%;
+			overflow: hidden;
+			position: relative;
+			border: 2px solid @body-bg;
+
+			&.no-foto {
+				&:before {
+					content: '\e008';
+					color: @body-bg;
+					font-family: @font-family-icons;
+					font-size: 1.6em;
+				    line-height: 1em;
+				    position: absolute;
+				    bottom: 0;
+				    left: 50%;
+				    margin-left: -.5em;
+				}
+			}
+		}
+
+		> ._text {
+			display: none;
+			padding-right: .6em;
+		    line-height: 1em;
+		}
+
+		.user-name, .user-status {
+			display: block;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+		.user-name {
+			font-weight: bold;
+		}
+
+		.user-status {
+		    font-size: .8em;
+		}
+	}
+
+	.shortcuts-list {
+		background-color: @body-bg;
+		border: .15em solid darken(@navigation-bg, 6%);
+		min-width: 120%;
+		position: absolute;
+		top: 85%;
+	    right: .5em;
+		border-radius: .4em;
+
+		&:before {
+			.triangle(top, .6em, .6em, darken(@navigation-bg, 6%));
+			position: absolute;
+			top: -.6em;
+			right: .6em;
+		}
+
+		.item {
+			display: block;
+			padding: .6em 1.2em;
+			text-decoration: none;
+
+			+ .item {
+				border-top: .1em solid darken(@navigation-bg, 4%);
+			}
+
+			&:hover {
+				background-color: darken(@body-bg, 2%);
+				color: @brand-primary;
+				> ._text {
+					color: currentcolor;
+				}
+			}
+
+			> ._icon {
+				font-size: 1.2em;
+    			top: .15em;
+				padding-right: .4em;
+			}
+
+			> ._text {
+				color: @text-color;
+			}
+		}
+	}
+}
+
+// Sidebar
+.khl-sidebar {
+	background: @sidebar-bg url('imgs/sidebar-bg.png') no-repeat center center;
+	background-size: cover;
+	color: @sidebar-color;
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 260px;
+
+	~ .khl-core {
+		margin-left: 260px;
+	}
+
+	.sidebar-header {
+		text-align: center;
+
+		> ._inner {
+			font-size: 2em;
+		    display: inline-block;
+		    padding: .2em .6em;
+		    margin: 1em;
+		    border-radius: 0.2em;
+		}
+
+		a {
+			border: .08em solid rgba(255, 255, 255, .1);
+			color: darken(@sidebar-color, 14%);
+			text-decoration: none;
+			transition:
+				border 444ms ease,
+				color 444ms ease,
+				box-shadow 600ms ease 222ms;
+
+			&:hover, &:active {
+				border-color: @brand-primary;
+				color: lighten(@sidebar-color, 6%);
+				box-shadow: 0 0 32px fade(@brand-primary, 20%);
+			}
+		}
+	}
+
+	.sidebar-menu {
+		.item {
+			color: darken(@sidebar-color, 10%);
+			text-decoration: none;
+			display: block;
+			padding: .8em 1.2em;
+		    margin: .8em 1em;
+			position: relative;
+			z-index: 1;
+			border-radius: .2em;
+			transition:
+				background 444ms ease,
+				color 444ms ease;
+
+			&:hover, &:active {
+				background-color: lighten(@sidebar-bg, 2%);
+				background-color: rgba(255, 255, 255, .1);
+				color: lighten(@sidebar-color, 10%);
+			}
+
+			&.current {
+				background-color: @brand-primary;
+				color: lighten(@sidebar-color, 10%);
+			    box-shadow: 0 4px 8px -2px rgba(0, 0, 0, .5);
+			}
+
+			> ._icon, > ._text {
+				display: table-cell;
+				vertical-align: middle;
+			}
+
+			> ._icon {
+				font-size: 1.2em;
+			}
+
+			> ._text {
+				padding-left: 1em;
+			}
+		}
+	}
+}
+
+.khl-sidebar-btn-togglr {
+	cursor: pointer;
+	position: relative;
+	z-index: 1;
+
+	&:hover {
+		&:before {
+		    left: .2em;
+		}
+	}
+
+	&:before {
+		.triangle(left, .25em, .25em);
+		position: absolute;
+	    top: 50%;
+	    left: .3em;
+	    margin-top: -.25em;
+		transition: left 200ms ease;
+	}
+}
+
+@media screen and (min-width: @screen-xs-min) {
+	.khl-navigation {
+		.navigation-content {
+			&--right {
+				width: 14em;
+			}
+		}
+	}
+
+	// Navigation > User shortcuts
+	.nav-user-shortcuts {
+		.shortcuts-btn-togglr {
+			> ._text {
+				display: table-cell;
+			}
+		}
+	}
+}

@@ -1,0 +1,66 @@
+.jumbotron {
+	.jbt-action-buttons {
+		margin-top: 2em;
+
+		.btn {
+			font-size: 1.1em;
+			+ .btn {
+				margin-left: .4em;
+			}
+		}
+	}
+
+	// Jubotron variante : Landing page ----
+	&--landing {
+		background-color: darken(@body-bg, 3%);
+		color: lighten(@text-color, 6%);
+		font-size: 1em;
+		text-align: center;
+
+		.khl-logo {
+			color: @brand-primary;
+			font-size: 4em;
+		}
+
+		.jbt-title {
+			color: inherit;
+			font-size: 1.4em;
+			font-weight: 600;
+			margin-top: 0;
+			margin-bottom: 1.4em;
+		}
+
+		.jbt-main-text {
+			color: inherit;
+			font-size: 1.2em;
+			font-weight: 400;
+			max-width: 36em;
+    		margin: 0 auto;
+		}
+
+		// Responsive ----
+		// Responsive / SMALL ----
+		@media screen and (min-width: @screen-sm-min) {
+			font-size: 1.1em;
+			padding-top: 3.2em;
+			padding-bottom: 3.2em;
+		}
+
+		// Responsive / MEDIUM ----
+		@media screen and (min-width: @screen-md-min) {
+			font-size: 1.2em;
+			padding-top: 3.8em;
+			padding-bottom: 3.8em;
+		}
+
+		// Responsive / LARGE ----
+		@media screen and (min-width: @screen-lg-min) {
+			padding-top: 5.6em;
+			padding-bottom: 5.6em;
+
+			.jbt-title {
+				margin-bottom: 2em;
+			}
+		}
+	}
+}

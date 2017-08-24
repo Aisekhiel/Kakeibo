@@ -6,35 +6,22 @@
 @import "variables.less";
 @import "fonts.less";
 
-// Basics
+// Core CSS
 @import "buttons.less";
 @import "footer.less";
 
+// Components > Bootstrap adds
+@import "jumbotron.less";
+// Components > Personnal adds
+@import "components/magic-placeholder.less";
+@import "components/layout.less";
 
 
-// .pkmn-kit = <body> -------------------
-.kkb-core {
-	overflow: hidden; // Prevents margin collapse
-}
-
-
-.kkb-logo {
+.khl-logo {
 	font-family: @font-family-logo;
 	font-size: 1em;
 	font-weight: bold;
 	letter-spacing: .04em;
 	margin: 0;
 	user-select: none;
-
-	&--link {
-		color: @header-logo-color;
-		&:hover, &:focus {
-			color: @header-logo-color-hover;
-			text-decoration: none;
-		}
-
-		&:active {
-			color: @header-logo-color-active;
-		}
-	}
 }

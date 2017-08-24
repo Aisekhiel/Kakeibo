@@ -1,6 +1,27 @@
 {% extends 'base.html.twig' %}
 {% block meta_desc %}{% endblock %}
 
+{% block sidebar %}{% endblock %}
+{% block header %}{% endblock %}
+
 {% block body %}
+	<div class="jumbotron jumbotron--landing">
+		<div class="container">
+			<h1 class="khl-logo">Kakeïbo</h1>
+			<h2 class="jbt-title">Prenez le contrôle de votre argent</h2>
+			<div class="jbt-main-text">
+				Gérez de manière optimisée vos dépenses tout au court de l'année,
+				à l'aide à nos graphiques basé sur de longues études des Dinglebop et Schleem.
+			</div>
+			<div class="jbt-action-buttons">
+				<a class="btn btn-link" href="{{ path('dashboard') }}" role="button">Se connecter</a>
+				<a class="btn btn-primary" href="#subscribe" role="button">S'inscrire</a>
+			</div>
+			<div class="jbt-bottom-illustration">
+
+			</div>
+		</div>
+	</div>
+
 	{% include 'samples.html.twig' %}
 {% endblock %}
