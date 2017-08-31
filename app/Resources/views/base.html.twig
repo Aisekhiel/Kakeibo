@@ -5,23 +5,28 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 
-		<!-- Basic SEO -->
-		<title>{% block meta_title %}{% endblock %}{% block meta_title_base %}Kakeïbo{% endblock %}</title>
+		<!-- SEO -->
+		<title>{% block meta_title_base %}Kakeïbo{% endblock %}</title>
 		<meta name="description" content="{% block meta_desc %}{% endblock %}" />
 		<!-- Stylesheets -->
 		<link href="{{ asset('css/kakeibo.css') }}" rel="stylesheet" />
 		{% block stylesheets %}{% endblock %}
 		<!-- Javascripts -->
 		<script type="text/javascript" src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+		{% if js_list is defined and js_list is iterable %}
+			{% for js in js_list %}
+			<script type="text/javascript" src="{{ asset('js/' ~ js) }}"></script>
+			{% endfor %}
+		{% endif %}
 
 		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
 	<body>
-		{% block sidebar %}
+		{% if is_dashboard is defined and is_dashboard == true %}
 			{% include 'components/sidebar.html.twig' %}
-		{% endblock %}
+		{% endif %}
 
-		<div class="khl-core">
+		<div class="khl-core{% if is_dashboard is defined and is_dashboard == true %} fixybar-neighbor{% endif %}">
 			{% block header %}
 				{% include 'components/header.html.twig' %}
 			{% endblock %}

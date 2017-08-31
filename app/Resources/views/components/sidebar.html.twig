@@ -1,33 +1,39 @@
 
-<sidebar class="khl-sidebar">
-	<div class="sidebar-header">
-		<a class="_inner khl-logo" href="{{ path('homepage') }}">Kakeibo</a>
+<sidebar class="fixybar">
+	<div class="_inner">
+		<div class="fixybar-header">
+			<a class="_inner" href="{{ path('homepage') }}">
+				<span class="khl-logo khl-logo--mini">K</span>
+				<span class="khl-logo">Kakeibo</span>
+			</a>
+		</div>
+		<div class="fixybar-menu">
+			<a class="item current" href="{{ path('dashboard') }}">
+				<span class="_icon"><span class="glyphicon glyphicon-home"></span></span>
+				<span class="_text">Accueil</span>
+			</a>
+			<a class="item" href="#stats">
+				<span class="_icon"><span class="glyphicon glyphicon-stats"></span></span>
+				<span class="_text">Statistiques</span>
+			</a>
+			<!-- fake -->
+			<a class="item" href="#lorem">
+				<span class="_icon"><span class="glyphicon glyphicon-paperclip"></span></span>
+				<span class="_text">Railgun launcher</span>
+			</a>
+			<a class="item" href="#lorem">
+				<span class="_icon"><span class="glyphicon glyphicon-piggy-bank"></span></span>
+				<span class="_text">My (piggy)bank</span>
+			</a>
+			<a class="item" href="#lorem">
+				<span class="_icon"><span class="glyphicon glyphicon-sunglasses"></span></span>
+				<span class="_text">A cool link</span>
+			</a>
+			<a class="item" href="#lorem">
+				<span class="_icon"><span class="glyphicon glyphicon-leaf"></span></span>
+				<span class="_text">Economic mode</span>
+			</a>
+		</div>
 	</div>
-	<div class="sidebar-menu">
-		<a class="item current" href="{{ path('dashboard') }}">
-			<span class="_icon"><span class="glyphicon glyphicon-home"></span></span>
-			<span class="_text">Accueil</span>
-		</a>
-		<a class="item" href="#stats">
-			<span class="_icon"><span class="glyphicon glyphicon-stats"></span></span>
-			<span class="_text">Statistiques</span>
-		</a>
-		<!-- fake -->
-		<a class="item" href="#lorem">
-			<span class="_icon"><span class="glyphicon glyphicon-paperclip"></span></span>
-			<span class="_text">Railgun launcher</span>
-		</a>
-		<a class="item" href="#lorem">
-			<span class="_icon"><span class="glyphicon glyphicon-piggy-bank"></span></span>
-			<span class="_text">My (piggy)bank</span>
-		</a>
-		<a class="item" href="#lorem">
-			<span class="_icon"><span class="glyphicon glyphicon-sunglasses"></span></span>
-			<span class="_text">A cool link</span>
-		</a>
-		<a class="item" href="#lorem">
-			<span class="_icon"><span class="glyphicon glyphicon-leaf"></span></span>
-			<span class="_text">Economic mode</span>
-		</a>
-	</div>
+	<span class="_mask"></span>
 </sidebar>

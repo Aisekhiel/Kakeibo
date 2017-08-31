@@ -5,6 +5,7 @@
 // Navigation
 .khl-navigation {
 	background-color: @navigation-bg;
+	color: @navigation-color;
     min-height: @navigation-min-height;
 	// position: fixed;
 	// top: 0;
@@ -23,22 +24,37 @@
 		width: 100%;
 
 		&--right {
-			width: 3.6em;
+			width: 3.2em;
 		}
 	}
 
-	.khl-sidebar-btn-togglr {
-		font-size: 1.4em;
+	.fixybar-btn-togglr {
+		font-size: 1.15em;
 		display: inline-block;
-		padding: @navitation-item-padding-vertical .8em;
+		padding: 0 .8em 0 1em;
 	}
 }
 
 // Navigation > User shortcuts
 .nav-user-shortcuts {
 	background-color: darken(@navigation-bg, 2%);
-	padding: @navitation-item-padding-vertical;
+	padding: @navitation-item-padding-vertical 1em;
 	position: relative;
+
+	&:hover {
+		cursor: pointer;
+
+		.shortcuts-btn-togglr {
+			.user-name { color: darken(@navigation-color, 6%); }
+			.user-status { color: @navigation-color; }
+		}
+
+		.shortcuts-list {
+			top: 85%;
+			opacity: 1;
+			pointer-events: auto;
+		}
+	}
 
 	.shortcuts-btn-togglr {
 		display: table;
@@ -53,7 +69,7 @@
 
 		> ._avatar {
 			background-color: darken(@navigation-bg, 10%);
-			width: 2.4em;
+			width: 2.2em;
 			border-radius: 50%;
 			overflow: hidden;
 			position: relative;
@@ -76,7 +92,9 @@
 
 		> ._text {
 			display: none;
-			padding-right: .6em;
+			text-align: right;
+		    padding-top: .2em;
+		    padding-right: .8em;
 		    line-height: 1em;
 		}
 
@@ -92,6 +110,7 @@
 		}
 
 		.user-status {
+			color: lighten(@navigation-color, 20%);
 		    font-size: .8em;
 		}
 	}
@@ -99,11 +118,14 @@
 	.shortcuts-list {
 		background-color: @body-bg;
 		border: .15em solid darken(@navigation-bg, 6%);
-		min-width: 120%;
-		position: absolute;
-		top: 85%;
-	    right: .5em;
 		border-radius: .4em;
+		min-width: 200px;
+		position: absolute;
+		top: 150%;
+	    right: .8em;
+		opacity: 0;
+		pointer-events: none;
+		transition: top 400ms ease, opacity 400ms ease;
 
 		&:before {
 			.triangle(top, .6em, .6em, darken(@navigation-bg, 6%));
@@ -142,111 +164,6 @@
 	}
 }
 
-// Sidebar
-.khl-sidebar {
-	background: @sidebar-bg url('imgs/sidebar-bg.png') no-repeat center center;
-	background-size: cover;
-	color: @sidebar-color;
-	position: fixed;
-	left: 0;
-	top: 0;
-	bottom: 0;
-	width: 260px;
-
-	~ .khl-core {
-		margin-left: 260px;
-	}
-
-	.sidebar-header {
-		text-align: center;
-
-		> ._inner {
-			font-size: 2em;
-		    display: inline-block;
-		    padding: .2em .6em;
-		    margin: 1em;
-		    border-radius: 0.2em;
-		}
-
-		a {
-			border: .08em solid rgba(255, 255, 255, .1);
-			color: darken(@sidebar-color, 14%);
-			text-decoration: none;
-			transition:
-				border 444ms ease,
-				color 444ms ease,
-				box-shadow 600ms ease 222ms;
-
-			&:hover, &:active {
-				border-color: @brand-primary;
-				color: lighten(@sidebar-color, 6%);
-				box-shadow: 0 0 32px fade(@brand-primary, 20%);
-			}
-		}
-	}
-
-	.sidebar-menu {
-		.item {
-			color: darken(@sidebar-color, 10%);
-			text-decoration: none;
-			display: block;
-			padding: .8em 1.2em;
-		    margin: .8em 1em;
-			position: relative;
-			z-index: 1;
-			border-radius: .2em;
-			transition:
-				background 444ms ease,
-				color 444ms ease;
-
-			&:hover, &:active {
-				background-color: lighten(@sidebar-bg, 2%);
-				background-color: rgba(255, 255, 255, .1);
-				color: lighten(@sidebar-color, 10%);
-			}
-
-			&.current {
-				background-color: @brand-primary;
-				color: lighten(@sidebar-color, 10%);
-			    box-shadow: 0 4px 8px -2px rgba(0, 0, 0, .5);
-			}
-
-			> ._icon, > ._text {
-				display: table-cell;
-				vertical-align: middle;
-			}
-
-			> ._icon {
-				font-size: 1.2em;
-			}
-
-			> ._text {
-				padding-left: 1em;
-			}
-		}
-	}
-}
-
-.khl-sidebar-btn-togglr {
-	cursor: pointer;
-	position: relative;
-	z-index: 1;
-
-	&:hover {
-		&:before {
-		    left: .2em;
-		}
-	}
-
-	&:before {
-		.triangle(left, .25em, .25em);
-		position: absolute;
-	    top: 50%;
-	    left: .3em;
-	    margin-top: -.25em;
-		transition: left 200ms ease;
-	}
-}
 
 @media screen and (min-width: @screen-xs-min) {
 	.khl-navigation {

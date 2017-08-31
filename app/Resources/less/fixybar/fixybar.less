@@ -1,0 +1,278 @@
+// Variables
+@import "variables.less";
+
+// Core CSS
+// -- Body status
+body {
+    overflow-x: hidden;
+
+	&.fixybar--no-anim {
+		.fixybar, .fixybar-neighbor {
+			transition: none !important;
+		}
+
+		.fixybar {
+			.fixybar-menu {
+				.item {
+					> ._text {
+						transition: none !important;
+					}
+				}
+			}
+		}
+	}
+
+	&.fixybar--is-wide {
+	    overflow-y: hidden;
+
+		.fixybar {
+			width: @fixybar-width-wide;
+
+			> ._mask {
+			    left: @fixybar-width-wide;
+			    opacity: 1;
+				pointer-events: auto;
+			}
+
+			.fixybar-header {
+				font-size: 1.2em;
+
+				> ._inner {
+					font-size: 1.2em;
+					margin-top: 1.4em;
+				    margin-bottom: 1em;
+					padding: .35em .6em .3em;
+				}
+
+				.khl-logo {
+					display: block;
+
+					&--mini {
+						display: none;
+					}
+				}
+			}
+
+			.fixybar-menu {
+				.item {
+					> ._text {
+						transition: opacity 400ms ease 200ms;
+						opacity: 1;
+					}
+				}
+			}
+		}
+
+		// Near Sidebar
+		.fixybar-neighbor {
+			left: @fixybar-width-wide - @fixybar-width-mini;
+		}
+	}
+}
+
+// -- Button toggler
+.fixybar-btn-togglr {
+	cursor: pointer;
+	position: relative;
+	z-index: 1;
+	transition: color 400ms ease;
+
+	&:hover {
+		&:before {
+		    left: .2em;
+		}
+	}
+
+	&:before {
+		.triangle(left, .25em, .25em);
+		position: absolute;
+	    top: 50%;
+	    left: .3em;
+	    margin-top: -.25em;
+		transition: left 200ms ease;
+	}
+}
+
+// -- Sidebar
+.fixybar {
+	background-color: @fixybar-bg;
+	color: @fixybar-color;
+	position: fixed;
+	z-index: 20;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: @fixybar-width-mini;
+	overflow-y: auto;
+	overflow-x: hidden;
+	transition: width 400ms ease;
+
+	> ._mask {
+		content: '';
+	    background-color: fade(@body-bg, 80%);
+	    position: fixed;
+	    z-index: 5;
+	    top: 0;
+	    left: @fixybar-width-mini;
+	    right: 0;
+	    bottom: 0;
+	    opacity: 0;
+	    transition:
+			background 400ms ease,
+			opacity 400ms ease,
+			left 400ms ease;
+		pointer-events: none;
+
+		&:hover {
+	    	background-color: fade(@body-bg, 60%);
+			cursor: pointer;
+		}
+	}
+
+	.fixybar-header {
+		text-align: center;
+
+		> ._inner {
+			font-size: 1.4em;
+		    display: inline-block;
+		    border-radius: .2em;
+		    padding: .15em .4em .1em .4em;
+		    margin: .4em auto;
+		}
+
+		.khl-logo {
+			display: none;
+
+			&--mini {
+				display: block;
+			}
+		}
+
+		a {
+			border: .08em solid rgba(255, 255, 255, .1);
+			color: darken(@fixybar-color, 14%);
+			text-decoration: none;
+			transition:
+				border 400ms ease,
+				color 400ms ease,
+				box-shadow 600ms ease 222ms;
+
+			&:hover, &:active {
+				border-color: @brand-primary;
+				color: lighten(@fixybar-color, 6%);
+				box-shadow: 0 0 32px fade(@brand-primary, 20%);
+			}
+		}
+	}
+
+	.fixybar-menu {
+		.item {
+			color: darken(@fixybar-color, 10%);
+			text-decoration: none;
+			display: block;
+			padding: .7em .6em .6em .6em;
+		    margin: 1em .5em;
+			position: relative;
+			z-index: 1;
+			border-radius: .2em;
+			transition:
+				background 400ms ease,
+				color 400ms ease;
+
+			&:hover, &:active {
+				background-color: lighten(@fixybar-bg, 2%);
+				background-color: rgba(255, 255, 255, .1);
+				color: lighten(@fixybar-color, 10%);
+			}
+
+			&.current {
+				background-color: @brand-primary;
+				color: lighten(@fixybar-color, 10%);
+			    box-shadow: 0 8px 4px -5px rgba(0, 0, 0, .25);
+			}
+
+			> ._icon, > ._text {
+				display: table-cell;
+				vertical-align: middle;
+			}
+
+			> ._text {
+				font-size: .8em;
+				white-space: nowrap;
+				padding-left: 1em;
+				opacity: 0;
+				transition: none;
+			}
+		}
+	}
+}
+
+// Near Sidebar
+.fixybar-neighbor {
+	position: relative;
+	z-index: 10;
+	left: 0;
+	margin-left: @fixybar-width-mini;
+	transition: left 400ms ease;
+}
+
+
+
+
+// Responsive ----
+// Responsive / SMALL ----
+@media screen and (min-width: @screen-md-min) {
+	// Body status
+	body {
+		&.fixybar--is-wide {
+		    overflow-y: auto;
+
+			// Sidebar
+			.fixybar {
+				width: @fixybar-width-wide-md;
+
+				.fixybar-header {
+					> ._inner {
+						font-size: 1.6em;
+					}
+				}
+			}
+
+			// Near Sidebar
+			.fixybar-neighbor {
+				left: 0;
+				margin-left: @fixybar-width-wide-md;
+			}
+		}
+	}
+
+	// Main
+	.fixybar {
+		width: @fixybar-width-mini-md;
+
+		> ._mask {
+			display: none;
+		}
+
+		.fixybar-header {
+			> ._inner {
+				font-size: 1.8em;
+			}
+		}
+
+		.fixybar-menu {
+			font-size: 1.15em;
+
+			.item {
+				padding: .8em .8em .7em .8em;
+				margin: 1em .7em;
+			}
+		}
+	}
+
+	// Near Sidebar
+	.fixybar-neighbor {
+		margin-left: @fixybar-width-mini-md;
+		transition: margin 400ms ease;
+	}
+}
