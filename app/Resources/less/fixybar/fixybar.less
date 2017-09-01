@@ -34,6 +34,22 @@ body {
 				pointer-events: auto;
 			}
 
+			.fixybar-actions {
+				.action-item {
+					&--in {
+						left: @fixybar-width-wide - @fixybar-width-mini;
+						opacity: 1;
+						pointer-events: auto;
+					}
+
+					&--out {
+						left: @fixybar-width-wide;
+						opacity: 0;
+						pointer-events: none;
+					}
+				}
+			}
+
 			.fixybar-header {
 				font-size: 1.2em;
 
@@ -63,33 +79,27 @@ body {
 			}
 		}
 
-		// Near Sidebar
+		// -- Button toggler
+		.fixybar-btn-togglr {
+			> ._inner {
+				&:before {
+				    width: 1.2em;
+				}
+			}
+
+			&:hover {
+				> ._inner {
+					&:before {
+					    width: .2em;
+					}
+				}
+			}
+		}
+
+		// -- Near Sidebar
 		.fixybar-neighbor {
 			left: @fixybar-width-wide - @fixybar-width-mini;
 		}
-	}
-}
-
-// -- Button toggler
-.fixybar-btn-togglr {
-	cursor: pointer;
-	position: relative;
-	z-index: 1;
-	transition: color 400ms ease;
-
-	&:hover {
-		&:before {
-		    left: .2em;
-		}
-	}
-
-	&:before {
-		.triangle(left, .25em, .25em);
-		position: absolute;
-	    top: 50%;
-	    left: .3em;
-	    margin-top: -.25em;
-		transition: left 200ms ease;
 	}
 }
 
@@ -109,7 +119,7 @@ body {
 
 	> ._mask {
 		content: '';
-	    background-color: fade(@body-bg, 80%);
+	    background-color: fade(@fixybar-neighbor-bg, 80%);
 	    position: fixed;
 	    z-index: 5;
 	    top: 0;
@@ -124,8 +134,28 @@ body {
 		pointer-events: none;
 
 		&:hover {
-	    	background-color: fade(@body-bg, 60%);
+	    	background-color: fade(@fixybar-neighbor-bg, 60%);
 			cursor: pointer;
+		}
+	}
+
+	.fixybar-actions {
+		.action-item {
+			position: fixed;
+			top: 0;
+			transition: left 400ms ease, opacity 400ms ease;
+
+			&--in {
+				color: @fixybar-in-color;
+				left: 0;
+				opacity: 0;
+				pointer-events: none;
+			}
+
+			&--out {
+				color: @fixybar-out-color;
+				left: @fixybar-width-mini;
+			}
 		}
 	}
 
@@ -207,6 +237,54 @@ body {
 	}
 }
 
+// -- Button toggler
+.fixybar-btn-togglr {
+	background: @fixybar-btn-tglr-bg;
+	font-family: sans-serif;
+	font-size: 10px;
+	text-align: center;
+	border: 0;
+	display: inline-block;
+	padding: @fixybar-btn-tglr-padding;
+	cursor: pointer;
+	outline: none;
+
+	&:hover {
+		> ._inner {
+			opacity: 1;
+
+			&:before {
+			    width: 1.2em;
+			}
+		}
+	}
+
+	> ._inner {
+		display: block;
+		border: .1em solid;
+	    border-radius: .2em;
+		margin: 0 auto;
+		height: 1.8em;
+	    width: 2em;
+		position: relative;
+		z-index: 1;
+		opacity: .5;
+		transition: opacity 400ms ease;
+
+		&:before {
+			content: '';
+			background-color: currentcolor;
+		    display: block;
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    height: 100%;
+		    width: .2em;
+			transition: width 400ms ease;
+		}
+	}
+}
+
 // Near Sidebar
 .fixybar-neighbor {
 	position: relative;
@@ -231,6 +309,18 @@ body {
 			.fixybar {
 				width: @fixybar-width-wide-md;
 
+				.fixybar-actions {
+					.action-item {
+						&--in {
+							left: @fixybar-width-wide-md - @fixybar-width-mini-md;
+						}
+
+						&--out {
+							left: @fixybar-width-wide-md;
+						}
+					}
+				}
+
 				.fixybar-header {
 					> ._inner {
 						font-size: 1.6em;
@@ -252,6 +342,18 @@ body {
 
 		> ._mask {
 			display: none;
+		}
+
+		.fixybar-actions {
+			.action-item {
+				&--in {
+					left: 0;
+				}
+
+				&--out {
+					left: @fixybar-width-mini-md;
+				}
+			}
 		}
 
 		.fixybar-header {
