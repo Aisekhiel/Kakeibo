@@ -8,11 +8,14 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/", name="homepage")
-     */
-    public function indexAction(Request $request)
-    {
-        return $this->render('homepage/homepage.html.twig', []);
-    }
+  /**
+   * @Route("/", name="homepage")
+   */
+  public function indexAction(Request $request)
+  {
+		// redirect to the "dashboard" route, homepage isn't ready yet
+  	return $this->redirectToRoute('dashboard');
+
+    // return $this->render('homepage/homepage.html.twig', []);
+  }
 }
