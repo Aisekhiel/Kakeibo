@@ -1,15 +1,16 @@
 .khl-body {
 	overflow: hidden; // Prevents margin collapse
+	padding-top: 3.4em;
 }
 
 // Navigation
 .khl-navigation {
 	background-color: @navigation-bg;
+	background-color: fade(@body-bg, 85%);
 	color: @navigation-color;
-	// position: fixed;
-	// top: 0;
-	// left: 0;
-	// right: 0;
+	position: fixed;
+	z-index: 10;
+	top: 0;
 
 	> ._inner {
 		display: table;
