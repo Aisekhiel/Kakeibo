@@ -1,6 +1,5 @@
 .khl-body {
 	overflow: hidden; // Prevents margin collapse
-	padding-top: 3.4em;
 }
 
 // Navigation
@@ -11,6 +10,10 @@
 	position: fixed;
 	z-index: 10;
 	top: 0;
+
+	~ .khl-body {
+		padding-top: 3.4em;
+	}
 
 	> ._inner {
 		display: table;
